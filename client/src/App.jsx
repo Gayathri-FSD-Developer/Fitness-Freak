@@ -2,12 +2,10 @@ import { ThemeProvider, styled } from "styled-components";
 import { lightTheme } from "./utils/Themes";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Authentication from "./pages/Authentication.jsx";
-import { useState } from "react";
-import Navbar from "./components/NavbarCompo.jsx";
+
 import NavbarCompo from "./components/NavbarCompo.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import MyNavbar from "./components/MyNavbar.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Workouts from "./pages/Workouts.jsx";
 import Contact from "./pages/Contact.jsx";
@@ -27,17 +25,16 @@ const Container = styled.div`
 `;
 
 function App() {
-  // const [user, setUser] = useState(true);
+  
+  // Current user token 
    const { currentUser } = useSelector((state) => state.user);
-  console.log(currentUser,"App.js");
+  
   return (
     <ThemeProvider theme={lightTheme}>
       <BrowserRouter>
         {/* If user present it go for home. If not present go for Authentication */}
         {currentUser ? (
           <Container>
-            {/* <Navbar/> */}
-            {/* <MyNavbar/> */}
             <NavbarCompo currentUser={currentUser}/>
 
             {/* Routing 
