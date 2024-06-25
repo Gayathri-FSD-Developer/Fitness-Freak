@@ -350,7 +350,7 @@ const parseWorkoutLine = (parts) => {
 const calculateCaloriesBurnt = (workoutDetails) => {
   const durationInMinutes = parseInt(workoutDetails.duration);
   const weightInKg = parseInt(workoutDetails.weight);
-  const caloriesBurntPerMinute = 5; // Sample value, actual calculation may vary
+  const caloriesBurntPerMinute = 3; // Sample value, actual calculation may vary
   return durationInMinutes * caloriesBurntPerMinute * weightInKg;
 };
 
