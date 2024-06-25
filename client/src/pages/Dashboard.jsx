@@ -132,7 +132,7 @@ const Dashboard = () => {
       .catch((err) => {
         alert(err.response.data.message);
         setLoading(false);
-        // setButtonLoading(false);
+        setButtonLoading(false);
       });
   };
   // Function to Add workout
@@ -163,8 +163,8 @@ const Dashboard = () => {
     // no date so server(backend)it take today as default date
     await getWorkouts(token, "")
       .then((res) => {
-        setTodaysWorkouts(res?.data?.todaysWorkouts);
-        console.log(res.data);
+        setTodaysWorkouts(res?.data.todaysWorkouts);
+        // console.log(res.data);
         setLoading(false);
       })
       .catch((err) => {
