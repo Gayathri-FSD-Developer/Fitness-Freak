@@ -57,6 +57,8 @@ export const UserLogin = async (req, res, next) => {
       expiresIn: "100 years",
     });
     console.log(token,"tokenCreated");
+    console.log(process.env.JWT,"Jwt secret");
+    
     return res.status(200).json({ token, user });
   } catch (error) {
     return next(error);
