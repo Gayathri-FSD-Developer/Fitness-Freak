@@ -31,7 +31,7 @@ export const UserRegister = async (req, res, next) => {
     const token = jwt.sign({ id: createdUser._id }, process.env.JWT, {
       expiresIn: "100 years",
     });
-
+    console.log(token,"tokenCreated");
     return res.status(200).json({ token, user });
   } catch (error) {
     return next(error);
@@ -56,6 +56,11 @@ export const UserLogin = async (req, res, next) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT, {
       expiresIn: "100 years",
     });
+<<<<<<< HEAD
+=======
+    console.log(token,"tokenCreated");
+    console.log(process.env.JWT,"Jwt secret");
+>>>>>>> 03f893c7e93ed1e1d9991b3e51f05e3ab14b7c51
     
     return res.status(200).json({ token, user });
   } catch (error) {
