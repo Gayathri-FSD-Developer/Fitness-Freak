@@ -132,7 +132,7 @@ const Dashboard = () => {
       .catch((err) => {
         alert(err.response.data.message);
         setLoading(false);
-        setButtonDisabled(false);
+        // setButtonLoading(false);
       });
   };
   // Function to Add workout
@@ -149,14 +149,16 @@ const Dashboard = () => {
       .catch((err) => {
         alert(err.response.data.message);
         setLoading(false);
-        setButtonDisabled(false);
+        setButtonLoading(false);
       });
   };
 
   //Get today added workouts
   const getTodaysWorkout = async () => {
     setLoading(true);
-    const token = localStorage.getItem("fittrack-app-token");
+    
+    const token = localStorage.getItem("fitfreak-app-token");
+    console.log(token,"Localstroage");
     // no date so server(backend)it take today as default date
     await getWorkouts(token, "")
       .then((res) => {
@@ -167,7 +169,7 @@ const Dashboard = () => {
       .catch((err) => {
         alert(err.response.data.message);
         setLoading(false);
-        setButtonDisabled(false);
+        setButtonLoading(false);
       });
   };
 

@@ -63,6 +63,10 @@ const SignIn = () => {
           setButtonDisabled(false);
         });
     }
+    else{
+      setLoading(false);
+      setButtonDisabled(false); 
+    }
   };
 
   return (

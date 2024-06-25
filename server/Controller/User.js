@@ -56,6 +56,7 @@ export const UserLogin = async (req, res, next) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT, {
       expiresIn: "100 years",
     });
+    
     return res.status(200).json({ token, user });
   } catch (error) {
     return next(error);
