@@ -1,0 +1,12 @@
+@media (min-width: 992px) {
+    .custom-navbar {
+      display: none;
+    }
+  }
+  
+  .navdrop {
+    /* Adjust the margin/padding to position inner links a bit lower */
+    margin-top: 250px; /* Example value, adjust as needed */
+    padding-bottom: 10px; /* Example value, adjust as needed */
+  }
+  
