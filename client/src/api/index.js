@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // created Axios instance with default settings such as the base URL. to avoid repeaded code
-const API = axios.create({ baseURL: "http://localhost:4000/api", });  //local server
-// const API = axios.create({ baseURL: "https://fitness-freak-wj6v.onrender.com/api", });
+// const API = axios.create({ baseURL: "http://localhost:4000/api", });  //local server
+const API = axios.create({ baseURL: "https://fitness-freak-wj6v.onrender.com/api", });
 
 export const UserSignUp = async (data) => API.post("/user/signup", data)
 export const UserSignIn = async (data) => API.post("/user/signin", data);
