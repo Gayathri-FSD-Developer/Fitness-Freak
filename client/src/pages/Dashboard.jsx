@@ -156,7 +156,7 @@ const Dashboard = () => {
   //Get today added workouts
   const getTodaysWorkout = async () => {
     setLoading(true);
-    const token = localStorage.getItem("fittrack-app-token");
+    const token = localStorage.getItem("fitfreak-app-token");
     console.log(token,"localstorageToken");
     // no date so server(backend)it take today as default date
     await getWorkouts(token, "")
