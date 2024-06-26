@@ -28,7 +28,8 @@ app.use((err, req, res, next) => {
 DbConnection()
 
 app.get('/',(req,res)=>{
-   res.status(200).json({message:"API connection done"})
+   res.status(200).json({message:`"Welcome to Fitness Freak..!"
+                   Please login to our website: https://fitnessfreak-getup-workout.netlify.app/`})
 })
 
 const port = process.env.PORT;

@@ -31,7 +31,6 @@ export const UserRegister = async (req, res, next) => {
     const token = jwt.sign({ id: createdUser._id }, process.env.JWT, {
       expiresIn: "100 years",
     });
-    console.log(token,"tokenCreated");
     return res.status(200).json({ token, user });
   } catch (error) {
     return next(error);
@@ -46,10 +45,10 @@ export const UserLogin = async (req, res, next) => {
     if (!user) {
       return next(createError(404, "User not found"));
     }
-    console.log(user, "user");
+   
     // Password checking (compareSync) hash the given p.w. compare both newly hased with stored hased p.w
     const isPasswordCorrect = bcrypt.compareSync(password, user.password);
-    console.log(isPasswordCorrect, "password");
+    
     if (!isPasswordCorrect) {
       return next(createError(403, "Incorrect Password. Enter right password"));
     }
@@ -183,7 +182,7 @@ export const getUserDashboard = async (req, res, next) => {
         weekData[0]?.totalCaloriesBurnt ? weekData[0]?.totalCaloriesBurnt : 0 //checking for the field exist and push otherwise : 0
       );
     }
-
+    // console.log(totalCaloriesBurnt,"response");
     return res.status(200).json({
       totalCaloriesBurnt:
         totalCaloriesBurnt.length > 0
@@ -230,7 +229,7 @@ export const getWorkoutsByDate = async (req, res, next) => {
       date: { $gte: startOfDay, $lt: endOfDay },
     });
     // Using reduce fun to sum the caloriesBurned field from all workouts retrieved from todaysWorkouts array.
-    const totalCaloriesBurnt = await todaysWorkouts.reduce(
+    const totalCaloriesBurnt = todaysWorkouts.reduce(
       (total, workout) => total + workout.caloriesBurned,
       0
     );
@@ -247,7 +246,7 @@ export const addWorkout = async (req, res, next) => {
   try {
     const userId = req.user?.id;
     const { workoutString } = req.body;
-    // console.log(workoutString,"Workoutstring");
+
     if (!workoutString) {
       return next(createError(400, "Workout string is missing"));
     }
@@ -280,8 +279,6 @@ export const addWorkout = async (req, res, next) => {
 
         // Extract workout details
         const workoutDetails = await parseWorkoutLine(parts);
-        console.log(workoutDetails);
-
         if (workoutDetails == null) {
           return next(createError(400, "Please enter in proper format"));
           // return res.status(400).json({err:"please enter in proper format"})
@@ -333,14 +330,13 @@ const parseWorkoutLine = (parts) => {
   // console.log(parts);
   if (parts.length >= 5) {
     details.workoutName = parts[1].substring(1).trim();
-    // console.log(details.workoutName,"WorkoutName");
+
     details.sets = parseInt(parts[2].split("sets")[0].substring(1).trim());
     details.reps = parseInt(
       parts[2].split("sets")[1].split("reps")[0].substring(1).trim()
     );
     details.weight = parseFloat(parts[3].split("kg")[0].substring(1).trim());
     details.duration = parseFloat(parts[4].split("min")[0].substring(1).trim());
-    console.log(details, "details");
     return details;
   }
   return null;
@@ -349,19 +345,19 @@ const parseWorkoutLine = (parts) => {
 // Function to calculate calories burnt for a workout
 const calculateCaloriesBurnt = (workoutDetails) => {
   const durationInMinutes = parseInt(workoutDetails.duration);
-  const weightInKg = parseInt(workoutDetails.weight);
-  const caloriesBurntPerMinute = 3; // Sample value, actual calculation may vary
-  return durationInMinutes * caloriesBurntPerMinute * weightInKg;
+const weightInKg = parseInt(workoutDetails.weight);
+const MET = 5; // Example MET value for moderate squats
+const caloriesBurntPerMinute = (MET * weightInKg * 3.5) / 200;
+const totalCaloriesBurnt = durationInMinutes * caloriesBurntPerMinute;
+return totalCaloriesBurnt;
 };
 
 // Contact page
 export const contactUs = async (req, res, next) => {
   try {
     const { name, email, message } = req.body;
-    console.log(req.body, "body");
     const userExist = await User.findOne({ email });
-    console.log(userExist, "userExist");
-    console.log(name, email, message, "name");
+
     if (!userExist)
       return next(
         createError(

@@ -116,7 +116,7 @@ const Dashboard = () => {
   const [workout, setWorkout] = useState(`#Legs
   -Back Squat
   -5 setsX15 reps
-  -30 kg
+  -60 kg
   -10 min`);
 
   // Function toget data for dashboard
@@ -126,7 +126,6 @@ const Dashboard = () => {
     await getDashboardDetails(token) //api call by passing token
       .then((res) => {
         setData(res.data);
-        // console.log(res.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -137,10 +136,10 @@ const Dashboard = () => {
   };
   // Function to Add workout
   const addNewWorkout = async () => {
-    setLoading(true);
+    setButtonLoading(true);
+
     const token = localStorage.getItem("fitfreak-app-token");
     await addWorkout(token, { workoutString: workout })
-      // console.log("workoutString",workout)
       .then((res) => {
         dashboardData();
         getTodaysWorkout();
@@ -158,13 +157,11 @@ const Dashboard = () => {
     setLoading(true);
 
     const token = localStorage.getItem("fitfreak-app-token");
-    console.log(token,"localstorageToken");
 
-    // no date so server(backend)it take today as default date
+    // if no date so backend server take today as default date
     await getWorkouts(token, "")
       .then((res) => {
         setTodaysWorkouts(res?.data.todaysWorkouts);
-        // console.log(res.data);
         setLoading(false);
       })
       .catch((err) => {

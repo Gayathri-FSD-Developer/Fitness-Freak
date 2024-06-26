@@ -60,6 +60,10 @@ const SignUp = () => {
           setButtonDisabled(false);
         });
     }
+    else{
+      setLoading(false);
+          setButtonDisabled(false);
+    }
   };
   return (
     <Container>

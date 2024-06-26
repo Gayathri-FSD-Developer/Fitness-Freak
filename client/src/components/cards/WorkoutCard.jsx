@@ -24,7 +24,8 @@ const Category = styled.div`
   font-size: 14px;
   color: ${({ theme }) => theme.primary};
   font-weight: 500;
-  background: ${({ theme }) => theme.primary + 20};
+  // background: ${({ theme }) => theme.primary + 20};
+  background: white;
   padding: 4px 10px;
   border-radius: 8px;
 `;

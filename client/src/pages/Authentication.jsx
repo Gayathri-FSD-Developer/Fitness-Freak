@@ -29,14 +29,12 @@ const Logo = styled.img`
   position: absolute;
   width: 100px;
   top: 50px;
-  left: 320px;
+  // left: 320px;
   z-index: 10;
   border-radius:50px;
 @media(max-width:700px)
 {
 width: 100px;
-  top: 50px;
-  left: 180px;
 }
 `;
 const Image = styled.img`
@@ -61,7 +59,7 @@ const Right = styled.div`
   // background-color:#7C9473;
   // background-color:#8F738A;
   background-color:#6C93A4;
-
+  
 `;
 const Text = styled.div`
   font-size: 16px;
@@ -88,9 +86,9 @@ const Authentication = () => {
         <Image src={AuthImage} />
       </Left>
       <Right>
-      <Logo src={LogoImage} />
       {!login ? (
           <>
+          <Logo src={LogoImage} />
             <SignIn />
             <Text>
               Don't have an account?{" "}

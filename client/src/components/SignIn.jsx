@@ -52,7 +52,6 @@ const SignIn = () => {
         .then((res) => {
           // dispatch an action to loginSuccess function
           dispatch(loginSuccess(res.data));
-          console.log(res.data);
           alert("Login Success...");
           setLoading(false);
           setButtonDisabled(false);

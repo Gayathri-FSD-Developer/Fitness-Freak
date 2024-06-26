@@ -82,7 +82,6 @@ const Workouts = () => {
     await getWorkouts(token, date ? `?date=${date}` : "")
       .then((res) => {
         setTodaysWorkouts(res?.data?.todaysWorkouts);
-        console.log(res.data);
         setLoading(false);
       })
       .catch((err) => {
