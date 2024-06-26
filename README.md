@@ -66,6 +66,9 @@
 <h4>FrontEnd deployment:</h4> <p>https://fitnessfreak-getup-workout-bygaya3.netlify.app</p>
 <h4>BackEnd deployment:</h4> <p>https://fitness-freak-wj6v.onrender.com</p>
 
+<h2>And my output will be</h2>
+<img src="githhub_result.jpg" alt="github_output" height="500" width="500">
+
 <h2>Thank you..!</h2>
 </div>
 
