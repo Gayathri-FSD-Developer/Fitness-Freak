@@ -69,7 +69,7 @@
 <h2>And my output will be</h2>
 <img src="Output_img/Login.png" alt="github_output" height="500" width="1000">
 <img src="Output_img/Dashboard.png" alt="github_output" height="500" width="1000">
-<img src="Output_img/mobileV2.png" alt="github_output" height="500" width="500">
+<img src="Output_img/mobileV2.png" alt="github_output" height="500" width="250">
 
 <h2>Thank you..!</h2>
 </div>
